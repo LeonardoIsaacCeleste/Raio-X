@@ -4,35 +4,27 @@ from selenium import webdriver
 from time import sleep
 
 # TROCAR DEPENDENDO DE QUAL FOR A PORTA (/dev/tty/ACM0, COM5)
-serial_port = '/dev/tty/ACM0'
-html_file = os.path.join(os.path.dirname(
-    os.path.abspath(__file__)), "testeSiteHtml.html")
+serial_port = '/dev/ttyACM0'
 
 
 ser = serial.Serial(serial_port, 9600)
-maxRange = ser.readline().decode().strip()  # 0
-
-
-a = True
-
-while a:
-    try:
-        maxRange = ser.readline().decode().strip()  # Maximo
-        print("Max "+maxRange)
-    except:
-        a = False
+maxRange = ser.read_until().decode('ascii').strip()
 
 driver = webdriver.Chrome()
-driver.get(html_file)
-dataAnterior = ser.readline().decode().strip()
+driver.get('file:/home/thiago/Documentos/projetos/flowih/RaioX-main/ui/index.html')
+oldData = ser.read_until().decode('ascii').strip()
 
-while True:
-    data = ser.readline().decode().strip()  # leitura da porta serial
-    print(f"Valor do encoder: {data}")  # exibição do valor do encode
-    if (dataAnterior != data):
-        print("movendo")
+can_move = True
+
+while can_move:
+    try:
+        data = ser.read_until().decode('ascii').strip()  # leitura da porta serial
+        print("Pos: "+data)
         driver.execute_script(f"habilitarRolagemHorizontal;")
-        driver.execute_script(
-            f"moverHorizontalmente("+str(data)+","+str(maxRange)+");")
-        driver.execute_script(f"desabilitarRolagemHorizontal();")
-        dataAnterior = data
+        # driver.execute_script(
+        #     f"moverHorizontalmente("+str(data)+","+str(maxRange)+");")
+        # driver.execute_script(f"desabilitarRolagemHorizontal();")
+        oldData = data
+    except Exception as e:
+        print(e)
+        can_move = False
