@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div style="width:7000px;background-image:url(phoca_thumb_l_image03_grd.png);height:2000px;">
+
+    </div>
+    <button onclick="desabilitarRolagemHorizontal()">Desabilitar rolagem horizontal</button>
+    <button onclick="habilitarRolagemHorizontal()">Habilitar rolagem horizontal</button>
+
+
+  </body>
+  <script type="text/javascript">
+    function desabilitarRolagemHorizontal() {
+      document.body.style.overflowX = 'hidden';
+    }
+    
+    function habilitarRolagemHorizontal() {
+      document.body.style.overflowX = 'scroll'; // ou 'auto', dependendo da sua preferência
+      console.log("certo")
+    }
+
+    function moverHorizontalmente(porcentagem) {
+      var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth;
+      var posicao = larguraTotal * (porcentagem / 100);
+      document.documentElement.scrollLeft = posicao;
+    }
+
+  </script>
+</html>
