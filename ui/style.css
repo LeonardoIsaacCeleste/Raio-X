@@ -123,7 +123,7 @@ display: none;
 }
 
 .carousel-wrapper {
-  width: 100%;
+  width: 95%;
   align-self: center;
   margin-top: 1em;
   height: 25vh;
@@ -234,7 +234,7 @@ display: none;
 .carousel-dots .dots {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 4px;
-  border: 1em solid transparent;
+  border: 0.35em solid transparent;
   border-radius: 56%;
   cursor: pointer;
 }
