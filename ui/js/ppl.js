@@ -6,7 +6,6 @@ let pplSlideIndex = 0;
 
 // function to add active slide attribute
 function activatePplSlide (slides) {
-    console.log(pplSlideIndex)
     slides.forEach(slide => {
         slide.removeAttribute('data-active-slide');
     });
@@ -15,7 +14,6 @@ function activatePplSlide (slides) {
 
 // function to add active dots attribute
 function activatePplDots(dots) {
-    console.log(pplSlideIndex)
     dots.forEach(dot => {
         dot.removeAttribute('data-active-dot')
     })
@@ -43,7 +41,6 @@ function showPplSlides(carouselWrapper, dots) {
 
 // function to navigate next or prev slide
 function nextOrPrevSlidePpl (dir) {
-    console.log(dir,pplCarousel, pplCarouselDots)
     if (dir === 'ppl-next') {
         pplSlideIndex++;
         showPplSlides(pplCarousel, pplCarouselDots);

@@ -213,7 +213,7 @@ display: none;
 .carousel-dots {
   position: absolute;
   width: fit-content;
-  left: 34%;
+  left: 30%;
   bottom: -1.5vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -224,7 +224,7 @@ display: none;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  gap: 1em;
+  gap: 4px;
   z-index: 2;
 }
 
