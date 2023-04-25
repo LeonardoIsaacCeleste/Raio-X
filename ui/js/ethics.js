@@ -1,7 +1,6 @@
 const carousel = document.querySelector('[ethics-carousel-wrapper]');
 const arrows = document.querySelectorAll('[data-carousel-arrows]');
 const carouselDots = document.querySelectorAll('[ethics-data-dots]');
-const slideNumber = document.querySelector('[ethics-slide-number-text]');
 
 let slideIndex = 0;
 
