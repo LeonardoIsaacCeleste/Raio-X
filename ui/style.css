@@ -6,9 +6,10 @@ body {
 .wrapper {
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
     min-width:100vw;
     height:100vh; 
-    padding: 0 5em;
+    padding:5em;
     background: rgb(97,36,153);
     background: linear-gradient(180deg, rgba(97,36,153,1) 19%, rgba(157,114,150,1) 55%, rgba(180,164,196,1) 89%, rgba(199,203,218,1) 100%);
 }
@@ -20,22 +21,24 @@ position: absolute;
 top: 0;
 display: none;
 }
+.trapezoid {
+    display: contents;
+}
 .trapezoid img {
-    margin-top: 2em;
-    height: 23vh;
-    width: 24vw;
+    width: 86%;
+    height: 250px;
     clip-path: polygon(0 0, 100% 0, 83% 100%, 0 100%);
 }
 .title {
     color: white;
-    font-size: 2.7cm;
+    font-size: 2vw;
     font-weight: bolder;
-    max-width: 12em;
+    max-width: 11.5em;
 }
 .content {
     color: white;
-    font-size: 2cm;
+    font-size: 1.2vw;
     margin-top: 1em;
-    width: 20vw;
-    text-align: justif
+    width: 32vw;
+    text-align: initial;
 }
