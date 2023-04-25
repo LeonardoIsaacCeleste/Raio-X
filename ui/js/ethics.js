@@ -1,15 +1,9 @@
-const carousel = document.querySelector('[js-carousel-wrapper]');
+const carousel = document.querySelector('[ethics-carousel-wrapper]');
 const arrows = document.querySelectorAll('[data-carousel-arrows]');
-const carouselDots = document.querySelectorAll('[js-data-dots]');
-const slideNumber = document.querySelector('[js-slide-number-text]');
+const carouselDots = document.querySelectorAll('[ethics-data-dots]');
+const slideNumber = document.querySelector('[ethics-slide-number-text]');
 
 let slideIndex = 0;
-
-// add current slide number on the top
-function addCurrentSlideNumber(slide, numberText) {
-    const lengthOfSlide = slide.length;
-    numberText.textContent = `${slideIndex + 1} / ${lengthOfSlide}`;
-}
 
 // function to add active slide attribute
 function activateSlide (slides) {
@@ -37,28 +31,22 @@ function disableArrows(slides, nextBtn, prevBtn) {
 
 // helper function to hide or show slides
 function showslides(carouselWrapper, dots) {
-    const slides = carouselWrapper.querySelectorAll('[js-carousel-item]');
+    const slides = carouselWrapper.querySelectorAll('[ethics-carousel-item]');
 
-    // Below commented code need to added only if we no need to disabled arrow once they reached to end
-    // if (slideIndex > slides.length - 1) slideIndex = 0;
-    // if (slideIndex < 0) slideIndex = slides.length - 1;
-
-    // Below code need to added only if we need to disable the arrows once they reached to end
     const nextBtn = carouselWrapper.querySelector('.next');
     const prevBtn = carouselWrapper.querySelector('.prev');
     disableArrows(slides, nextBtn, prevBtn)
 
     activateSlide (slides);
     activateDots(dots);
-    addCurrentSlideNumber(slides, slideNumber);
 }
 
 // function to navigate next or prev slide
 function nextOrPrevSlide (dir) {
-    if (dir === 'next') {
+    if (dir === 'ethics-next') {
         slideIndex++;
         showslides(carousel, carouselDots);
-    } else {
+    } else if (dir === 'ethics-prev') {
         slideIndex--;
         showslides(carousel, carouselDots);
     }
@@ -74,11 +62,7 @@ function currentSlide(n) {
 function handleArrowClickEvent(arrowBtn) {
     arrowBtn.forEach(arrow => {
         arrow.addEventListener('click', () => {
-            if (arrow.dataset.dir === 'next') {
-                nextOrPrevSlide('next');
-            } else {
-                nextOrPrevSlide('prev')
-            }
+            nextOrPrevSlide(arrow.dataset.dir);
         })
     });
 }
