@@ -62,7 +62,6 @@ function disableArrows(slides, nextBtn, prevBtn, index) {
 // helper function to hide or show slides
 function showslides(carouselWrapper, dots, index, query) {
     const slides = carouselWrapper.querySelectorAll(query);
-    console.log(carouselWrapper, dots, index, query)
     const nextBtn = carouselWrapper.querySelector('.next');
     const prevBtn = carouselWrapper.querySelector('.prev');
     disableArrows(slides, nextBtn, prevBtn, index)

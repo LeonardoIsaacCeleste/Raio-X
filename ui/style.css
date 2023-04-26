@@ -3,6 +3,10 @@ body {
     padding: 0;
     margin: 0;
 }
+
+/*
+CONTAINER
+*/
 .wrapper {
     display: flex;
     position: relative;
@@ -19,7 +23,6 @@ display:none;
 .scroll-range {
 position: absolute;
 top: 0;
-display: none;
 }
 .title {
     color: white;
@@ -33,67 +36,55 @@ display: none;
     color: white;
     font-size: 2vh;
     margin-top: 1em;
-    width: 83vw;
+    width: 75vw;
     text-align: initial;
 }
 .qr-code {
     position: absolute;
-    bottom: 2em;
-    width: 14vh;
+    bottom: 1em;
+    width: 10vh;
 }
 .container {
     padding: 5%;
     min-width: 90vw;
+    margin-top: 4vh;
 }
 .pic-container {
     position: relative;
 }
-
-@-webkit-keyframes fade {
-  0% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 1;
-  }
-  34% {
-    opacity: 0;
-  }
-  88% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.flag {
+  margin-top:2em;
+  height:13vh;
 }
-@keyframes fade {
-  0% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 1;
-  }
-  34% {
-    opacity: 0;
-  }
-  88% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-} 
-@keyframes text-fade {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-} 
+.message {
+  font-weight: bolder;
+  position: absolute;
+  bottom: -6vh;
+  z-index: 1;
+}
+.plane-stopped {
+  height: 10vh;
+  position: fixed;
+  bottom: 13vh;
+  transform: rotate(-6deg);
+  filter: drop-shadow(1px 1px 4px black);
+  left: 36.5vw;
+  z-index: 2;
+}
+.plane {
+  height: 10vh;
+  position: fixed;
+  bottom: 13vh;
+  left: 36.5vw;
+  z-index: 2;
+}
+
+
+
+/*
+  CAROUSEL
+*/
+
 
 .carousel-wrapper {
   width: 95%;
@@ -216,3 +207,158 @@ display: none;
 .carousel-dots .dots[data-active-dot] {
   background-color: #fff;
 }
+
+/*
+  PROGRESS BAR 
+*/
+
+.progress {
+  width: 100%;
+  list-style: none;
+  list-style-image: none;
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+  padding: 0;
+  position: absolute;
+  margin-left: 34vw;
+}
+.progress li {
+  float: left;
+  text-align: center;
+  position: relative;
+  height: 48px;
+  width: 14%;
+
+}
+.progress .name {
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+  color: white;
+  opacity: 0.4;
+}
+.progress .step {
+  color: white;
+  border: 3px solid rgba(157,114,150,1);
+  background-color: rgba(157,114,150,1);
+  border-radius: 50%;
+  line-height: 1.2;
+  font-size: 2.5em;
+  padding: 0 0.5em;
+  display: inline-block;
+  z-index: 2;
+  width: 4vh !important;
+  height: 4vh !important;
+}
+.progress .step span {
+  opacity: 0.4;
+}
+.progress .step:before {
+  content: "";
+  display: block;
+  background-color: rgba(157,114,150,1);
+  height: 0.4em;
+  width: 50%;
+  position: absolute;
+  bottom: 0.6em;
+  left: 0;
+  z-index: -1;
+}
+.progress .step:after {
+  content: "";
+  display: block;
+  background-color: rgba(157,114,150,1);
+  height: 0.4em;
+  width: 13.3vw;
+  position: absolute;
+  bottom: 0.6em;
+  left: 7.3vw;
+  right: 0;
+  z-index: 1;
+}
+.progress li:first-of-type .step:before {
+  display: none;
+}
+.progress li:last-of-type .step:after {
+  display: none;
+}
+.progress li[data-status="active"] .name,
+.progress li[data-status="active"] .step span {
+opacity: 1;
+}
+.progress li[data-status="done-recent"] .step:after {
+  background: linear-gradient(to right, rgb(61 17 101), rgb(179, 57, 204));
+}
+.progress li[data-status="done"] .step,
+.progress li[data-status="done-recent"] .step,
+.progress li[data-status="done"] .step:before,
+.progress li[data-status="done"] .step:after,
+.progress li[data-status="done-recent"] .step:before,
+.progress li[data-status="done-recent"] .step:after  {
+  background-color: rgb(61 17 101);
+}
+.progress li[data-status="done"] .step,
+.progress li[data-status="done-recent"] .step {
+border: 3px solid rgb(61 17 101);
+}
+.progress li[data-status="active"] .step,
+.progress li[data-status="active"] .step:before {
+  background-color: rgb(179, 57, 204);
+}
+.progress li[data-status="active"] .step:after {
+  background: linear-gradient(to right,  rgb(179, 57, 204), rgba(157,114,150,1));
+}
+.progress li[data-status="active"] .step {
+  border: 3px solid rgb(179, 57, 204);
+}
+
+
+/*
+ANIMATIONS
+*/
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  34% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  34% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} 
+@keyframes text-fade {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+} 

@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="script.js" defer></script>
-    <script src="teste.js" defer></script>
     <title></title>
   </head>
   <body>
     <div class="wrapper" id="scrolling-container">
+      <img src="./assets/embraer-azul.png" class="plane"/>
+      <div id="range-value" style="margin-top: 2em;position:fixed; font-size: 20px; color:white">0</div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
         <div class=" container rounded-[2em] h-[85vh] ">
           <div class="carousel-wrapper" ethics-carousel-wrapper>
@@ -77,6 +79,10 @@
             We follow the rules and question when necessary, 
             always in search of what is right and best for society, 
             for the company and for all.
+            <div style="display:flex; justify-content:center; position: relative;">
+              <img class="flag animate-bounce" src="./assets/destination.png"/>
+              <h3 class="message">1 - Checando combustível</h3>
+            </div>
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
           </div>
         </div>
@@ -524,27 +530,32 @@
         </div>
       </div>
     </div>
-    <input type="range" class="scroll-range" min="0" max="100" " input="scrollSlider()">
-
+    <input type="range" id="scroll-range" class="scroll-range" min="0" max="100" " value="0" input="teste">
   </body>
   <script type="text/javascript">
-    /*window.addEventListener('DOMContentLoaded', function() {
-      desabilitarRolagemHorizontal()
+    let teste = document.getElementById('range-value');
+    window.addEventListener('input', function(e) {
+      let range = e.target.value;
+      let panel = document.getElementById("scrolling-container")
+      let total = panel.scrollWidth - panel.offsetWidth;
+      let percentage = total*(range/100);
+      
+      panel.scrollLeft = percentage;
+      teste.innerText = range;
     });
     function desabilitarRolagemHorizontal() {
       let panel = document.getElementById("scrolling-container")
       panel.style.overflowX = 'hidden';
-    }*/
-
+    }
     function habilitarRolagemHorizontal() {
-        document.body.style.overflowX = 'scroll'; // ou 'auto', dependendo da sua preferência
+      document.body.style.overflowX = 'scroll'; // ou 'auto', dependendo da sua preferência
     }
     function moverHorizontalmente(range) {
       let panel = document.getElementById("scrolling-container")
       let total = panel.scrollWidth - panel.offsetWidth;
       let percentage = total*(range/100);
+      teste.innerText = e.target.value;
       panel.scrollLeft = percentage;
-      console.log(total);
     }
 
   </script>

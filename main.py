@@ -20,11 +20,12 @@ while can_move:
     try:
         data = ser.read_until().decode('ascii').strip()  # leitura da porta serial
         print("Pos: "+data)
-        driver.execute_script(f"habilitarRolagemHorizontal;")
         if not debug:
             driver.execute_script(
                 f"moverHorizontalmente("+str(data)+","+str(maxRange)+");")
             driver.execute_script(f"desabilitarRolagemHorizontal();")
+        else:
+            driver.execute_script(f"habilitarRolagemHorizontal;")
         oldData = data
     except Exception as e:
         print(e)
