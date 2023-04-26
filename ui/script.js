@@ -34,6 +34,7 @@ let pplSlideIndex = 0;
 let serveSlideIndex = 0;
 let striveSlideIndex = 0;
 
+
 // function to add active slide attribute
 function activateSlide (slides, index) {
     slides.forEach(slide => {

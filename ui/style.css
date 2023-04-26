@@ -13,16 +13,6 @@ body {
     background: rgb(97,36,153);
     background: linear-gradient(180deg, rgba(97,36,153,1) 19%, rgba(157,114,150,1) 55%, rgba(180,164,196,1) 89%, rgba(199,203,218,1) 100%);
 }
-.main_title {
-    font-size: 10vh;
-    font-weight: bolder;
-    color: white;
-    height: fit-content;
-    position: absolute;
-    left: 258%;
-    width: max-content;
-    top: 0;
-}
 ::-webkit-scrollbar {
 display:none;
 }
@@ -31,24 +21,13 @@ position: absolute;
 top: 0;
 display: none;
 }
-.trapezoid {
-    display: contents;
-}
-.trapezoid img {
-    position: absolute;
-    -webkit-animation: fade 20s infinite;
-    animation: fade 20s infinite;
-    display: block;
-    width: 86%;
-    min-height: 250px;
-    height: 25vh;
-    clip-path: polygon(0 0, 100% 0, 83% 100%, 0 100%);
-}
 .title {
     color: white;
     font-size: 3vh;
     font-weight: bolder;
     max-width: 12.5em;
+    -webkit-animation: text-fade 10s infinite;
+    animation: text-fade 10s infinite;
 }
 .content {
     color: white;
@@ -104,23 +83,21 @@ display: none;
     opacity: 1;
   }
 } 
-
-
-
-.crossfade_container {
-  position: relative;
-  display: block;
-  min-width: 50em;
-  height: 25vh;
-  margin: 0 auto;
-  border: none;
-  background: transparent;
-  clip-path: polygon(0 0, 100% 0, 83% 100%, 0 100%);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
+@keyframes text-fade {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+} 
 
 .carousel-wrapper {
   width: 95%;
+  filter: drop-shadow(0 0 2em rgb(133, 36, 153));
   align-self: center;
   margin-top: 1em;
   height: 25vh;
@@ -239,6 +216,3 @@ display: none;
 .carousel-dots .dots[data-active-dot] {
   background-color: #fff;
 }
-
-  
-  
