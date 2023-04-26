@@ -544,18 +544,27 @@
       teste.innerText = range;
     });
     function desabilitarRolagemHorizontal() {
+      document.body.style.overflowX = 'hidden';
+
+    }
+
+    function habilitarRolagemHorizontal() {
+        document.body.style.overflowX = 'scroll'; // ou 'auto', dependendo da sua preferência
+        console.log("certo")
+    }
+    function moverHorizontalmente(porcentagem,maxRange) {
+      var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth;
+      var posicao = larguraTotal * (porcentagem / maxRange);
+      teste.innerText = posicao;
+      document.documentElement.scrollLeft = posicao;
+    }
+
+    function desabilitarRolagemHorizontal() {
       let panel = document.getElementById("scrolling-container")
       panel.style.overflowX = 'hidden';
     }
     function habilitarRolagemHorizontal() {
       document.body.style.overflowX = 'scroll'; // ou 'auto', dependendo da sua preferência
-    }
-    function moverHorizontalmente(range) {
-      let panel = document.getElementById("scrolling-container")
-      let total = panel.scrollWidth - panel.offsetWidth;
-      let percentage = total*(range/100);
-      teste.innerText = e.target.value;
-      panel.scrollLeft = percentage;
     }
 
   </script>
