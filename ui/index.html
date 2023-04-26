@@ -79,7 +79,7 @@
             We follow the rules and question when necessary, 
             always in search of what is right and best for society, 
             for the company and for all.
-            <div style="display:flex; justify-content:center; position: relative;">
+            <div class="checkpoint-container">
               <img class="flag animate-bounce" src="./assets/destination.png"/>
               <h3 class="message">1 - Checando combustível</h3>
             </div>
@@ -539,7 +539,7 @@
       let panel = document.getElementById("scrolling-container")
       let total = panel.scrollWidth - panel.offsetWidth;
       let percentage = total*(range/100);
-      
+
       panel.scrollLeft = percentage;
       teste.innerText = range;
     });
