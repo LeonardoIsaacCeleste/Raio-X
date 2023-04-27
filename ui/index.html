@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="wrapper" id="scrolling-container">
-      <img src="./assets/embraer-azul.png" class="plane" id="plane"/>
+      <img src="./assets/embraer-azul.png" class="plane plane-stopped" id="plane"/>
       <div id="range-value" style="margin-top: 2em;position:fixed; font-size: 20px; color:white">0</div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
         <div class=" container rounded-[2em] h-[85vh] ">
@@ -563,7 +563,7 @@
       var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth;
       var posicao = larguraTotal * (porcentagem / maxRange);
       document.documentElement.scrollLeft = posicao;
-      
+
       document.body.style.overflowX = 'hidden';
     }
     function ativaBounce(flagId) {
