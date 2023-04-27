@@ -77,7 +77,7 @@ filter: drop-shadow(1px 1px 4px black);
 }
 .plane {
 height: 3.75vh;
-left: 11vw;
+left: 10vw;
 position: fixed;
 bottom: 1vh;
 z-index: 2;
@@ -101,7 +101,7 @@ z-index: 2;
     animation: text-fade 10s infinite;
   }
   .plane {
-    height: 5vh;
+    height: 3.75vh;
     left: 11vw;
     position: fixed;
     bottom: 1vh;
@@ -161,7 +161,7 @@ z-index: 2;
   }
 
 }
-@media (min-width: 1050px)  and (max-width: 1949px) {
+@media (min-width: 1050px)  and (max-width: 1299px) {
   .content {
     color: white;
     font-size: 1.7vh;
@@ -170,7 +170,7 @@ z-index: 2;
     text-align: initial;
   }
   .plane {
-    height: 5vh;
+    height: 3.75vh;
     left: 9vw;
     position: fixed;
     bottom: 1vh;
@@ -190,11 +190,12 @@ z-index: 2;
     bottom: 16vh;
   }
 }
-@media (min-width: 1300px) and (orientation: landscape)  {
+@media (min-width: 1300px) and (max-width: 1650px) and (max-height:1000px)  {
   .carousel-wrapper .carousel-item {
     position: absolute;
     width: 80vw;
-    height: 37vh !important;
+    height: 60vh  !important;
+    top: -16vh;
     opacity: 0;
     overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 83% 100%, 0 100%);
@@ -203,6 +204,14 @@ z-index: 2;
     -webkit-transition: all 300ms;
     transition: all 300ms;
     z-index: 1;
+  }
+  .carousel-wrapper .carousel-item img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
   }
   .title {
     color: white;
@@ -213,30 +222,34 @@ z-index: 2;
     -webkit-animation: text-fade 10s infinite;
     animation: text-fade 10s infinite;
   }
+  .qr-code {
+    width: 9vh;
+    position: absolute;
+    bottom: 16vh;
+  }
   .plane {
-    height: 5vh;
-    left: 10.5vw;
+    height: 3.75vh;
+    left: 8vw;
     position: fixed;
     bottom: 1vh;
     z-index: 2;
-    
   }
+  .content {
+    color: white;
+    font-size: 2.7vh;
+    margin-top: 1em;
+    width: 70vw;
+    text-align: initial;
+  } 
   .carousel-dots {
-    position: absolute;
-    width: fit-content;
-    left: 30%;
-    bottom: -7.5vh !important;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    gap: 4px;
-    z-index: 2;
+    bottom: -18.5vh !important;
+  }
+  .message {
+    font-weight: bolder;
+    bottom: -2vh;
+    z-index: 1;
+    width: max-content;
+    font-size: 1.5vh !important;
   }
 }
 /*
