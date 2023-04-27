@@ -556,11 +556,15 @@
   <script type="text/javascript">
     function moverHorizontalmente(porcentagem,maxRange) {
       console.log("porcentagem ",porcentagem," maxRange ",maxRange)
-      document.body.style.overflowX = 'scroll';
+
+      let panel = document.getElementById("scrolling-container")
+
+      panel.style.overflowX = 'scroll';
       console.log("scrollando")
-      var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth;
+      var larguraTotal = panel.scrollWidth - panel.clientWidth;
+      ativaEfeitosStep(porcentagem)
       var posicao = larguraTotal * (porcentagem / maxRange);
-      document.documentElement.scrollLeft = posicao;
+      panel.scrollLeft = posicao;
 
       document.body.style.overflowX = 'hidden';
     }
@@ -576,10 +580,12 @@
       plane.classList.remove('plane-stopped');
     }
     function ativaEfeitosStep(porcentagem) {
-      //TODO: Arrumar porcentagens conforme encoder
       let flags = ['flag-1', 'flag-2','flag-3', 'flag-4', 'flag-5', 'flag-6', 'flag-7'];
+      /*let validations = {
+        'flag-1': () =>
+      }*/
       if (parseFloat(porcentagem) >= 0 && parseFloat(porcentagem) < 1 ) {
-        ativaBounce('flag-1');
+        setTimeout(ativaBounce('flag-1'), 1000);
       }
       else if((parseFloat(porcentagem) > 16.5 && parseFloat(porcentagem) < 17.5 )) {
         setTimeout(ativaBounce('flag-2'), 1000); 
@@ -587,16 +593,16 @@
       else if((parseFloat(porcentagem) > 33 && parseFloat(porcentagem) <= 34 )) {
         setTimeout(ativaBounce('flag-3'), 1000); 
       }
-      else if((parseFloat(porcentagem) > 68 && parseFloat(porcentagem) <= 69 )) {
+      else if((parseFloat(porcentagem) > 49 && parseFloat(porcentagem) <= 51 )) {
         setTimeout(ativaBounce('flag-4'), 1000); 
       }
-      else if((parseFloat(porcentagem) > 85 && parseFloat(porcentagem) <= 86 )) {
+      else if((parseFloat(porcentagem) > 66 && parseFloat(porcentagem) <= 68 )) {
         setTimeout(ativaBounce('flag-5'), 1000); 
       }
-      else if((parseFloat(porcentagem) > 102 && parseFloat(porcentagem) <= 103 )) {
+      else if((parseFloat(porcentagem) > 83 && parseFloat(porcentagem) <= 85 )) {
         setTimeout(ativaBounce('flag-6'), 1000); 
       }
-      else if((parseFloat(porcentagem) > 119 && parseFloat(porcentagem) <= 120 )) {
+      else if((parseFloat(porcentagem) > 101 && parseFloat(porcentagem) <= 102 )) {
         setTimeout(ativaBounce('flag-7'), 1000); 
       }
       else {
