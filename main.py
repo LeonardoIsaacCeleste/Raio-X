@@ -1,6 +1,5 @@
 import serial
 from selenium import webdriver
-from time import sleep
 import os
 
 caminho = "file:"+os.path.dirname(os.path.abspath(__file__))+ "/Site/testeSiteHtml.html"
