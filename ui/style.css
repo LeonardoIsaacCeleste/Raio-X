@@ -10,7 +10,6 @@ CONTAINER
 .wrapper {
     display: flex;
     position: relative;
-    overflow-x: scroll;
     overflow-y: hidden;
     min-width:100vw;
     height:100vh; 
@@ -40,8 +39,6 @@ top: 0;
     text-align: initial;
 }
 .qr-code {
-    position: absolute;
-    bottom: 1em;
     width: 10vh;
 }
 .container {
@@ -54,35 +51,38 @@ top: 0;
 }
 .checkpoint-container {
   margin-top: 11vh;
+  color: white;
   display:flex; 
-  justify-content:center; 
-  position: relative;
+  flex-direction: column;
+  align-items:flex-start; 
+  position: absolute;
+  bottom: 7vh
 }
 .flag {
-  margin-top:2em;
   height:5vh;
+  width: 5vh;
 }
 .message {
   font-weight: bolder;
-  position: absolute;
   bottom: -2vh;
   z-index: 1;
+  width: max-content;
   font-size: 1vh;
 }
 .plane-stopped {
   height: 5vh;
   position: fixed;
-  bottom: 12.5vh;
-  left: 41.5vw;
+  bottom: 1vh;
+  left: 23vw;
   z-index: 2;
-  transform: rotate(-6deg);
+  transform: rotate(-12deg);
   filter: drop-shadow(1px 1px 4px black);
 }
 .plane {
   height: 5vh;
   position: fixed;
-  bottom: 12.5vh;
-  left: 41.5vw;
+  bottom: 1vh;
+  left: 23vw;
   z-index: 2;
 }
 

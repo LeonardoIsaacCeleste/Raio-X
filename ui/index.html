@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="wrapper" id="scrolling-container">
-      <img src="./assets/embraer-azul.png" class="plane"/>
+      <img src="./assets/embraer-azul.png" class="plane" id="plane"/>
       <div id="range-value" style="margin-top: 2em;position:fixed; font-size: 20px; color:white">0</div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
         <div class=" container rounded-[2em] h-[85vh] ">
@@ -79,11 +79,11 @@
             We follow the rules and question when necessary,
             always in search of what is right and best for society,
             for the company and for all.
-            <div class="checkpoint-container">
-              <img class="flag animate-bounce" src="./assets/destination.png"/>
-              <h3 class="message">1 - Checando combustível</h3>
-            </div>
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
+          </div>
+          <div class="checkpoint-container">
+            <img class="flag animate-bounce" id="flag-1" src="./assets/destination.png"/>
+            <h3 class="message">1. Inspecting fuselage and structural assemblies</h3>
           </div>
         </div>
       </div>
@@ -144,6 +144,10 @@
             with integrity, coherence,
             respect, and mutual trust.
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
+          </div>
+          <div class="checkpoint-container">
+            <img class="flag" id="flag-2" src="./assets/destination.png"/>
+            <h3 class="message">2. Inspecting cockpit and cockpit assembly.</h3>
           </div>
         </div>
       </div>
@@ -221,6 +225,10 @@
             partnerships, based on real
             commitment and flexibility.
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
+          </div>
+          <div class="checkpoint-container">
+            <img class="flag animate-bounce" id="flag-3" src="./assets/destination.png"/>
+            <h3 class="message">3. Checking engine and nacelle assembly.</h3>
           </div>
         </div>
       </div>
@@ -315,6 +323,10 @@
             planning, responsible delegation,
             and disciplined execution.
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
+            <div class="checkpoint-container">
+              <img class="flag animate-bounce" id="flag-4" src="./assets/destination.png"/>
+              <h3 class="message">4. Inspecting landing gear assembly.</h3>
+            </div>
           </div>
         </div>
       </div>
@@ -380,6 +392,10 @@
             challenges, with creativity
             and courage.
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
+          </div>
+          <div class="checkpoint-container">
+            <img class="flag animate-bounce" id="flag-5" src="./assets/destination.png"/>
+            <h3 class="message">5. Checking wings, center section and tail assembly</h3>
           </div>
         </div>
       </div>
@@ -462,6 +478,10 @@
             valuing diversity.
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
           </div>
+          <div class="checkpoint-container">
+            <img class="flag animate-bounce" id="flag-6" src="./assets/destination.png"/>
+            <h3 class="message">6. Inspecionando Conjunto propulsor</h3>
+          </div>
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
@@ -527,10 +547,13 @@
             and society.
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
           </div>
+          <div class="checkpoint-container">
+            <img class="flag animate-bounce" id="flag-7" src="./assets/destination.png"/>
+            <h3 class="message">7. Navigation and communication set working? All ready for takeoff!</h3>
+          </div>
         </div>
       </div>
     </div>
-    <input type="range" id="scroll-range" class="scroll-range" min="0" max="100" value="0" input="teste">
   </body>
   <script type="text/javascript">
     function moverHorizontalmente(porcentagem,maxRange) {
@@ -540,8 +563,47 @@
       var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth;
       var posicao = larguraTotal * (porcentagem / maxRange);
       document.documentElement.scrollLeft = posicao;
-
+      
       document.body.style.overflowX = 'hidden';
+    }
+    function ativaBounce(flagId) {
+      let plane = document.getElementById('plane');
+      let flag = document.getElementById(flagId);
+      flag.classList.add('animate-bounce');
+      plane.classList.add('plane-stopped');
+    }
+    function desativaBounce(flagList) {
+      let plane = document.getElementById('plane');
+      flagList.forEach(flagId =>document.getElementById(flagId).classList.remove('animate-bounce'));
+      plane.classList.remove('plane-stopped');
+    }
+    function ativaEfeitosStep(porcentagem) {
+      //TODO: Arrumar porcentagens conforme encoder
+      let flags = ['flag-1', 'flag-2','flag-3', 'flag-4', 'flag-5', 'flag-6', 'flag-7'];
+      if (parseFloat(porcentagem) >= 0 && parseFloat(porcentagem) < 1 ) {
+        ativaBounce('flag-1');
+      }
+      else if((parseFloat(porcentagem) > 16.5 && parseFloat(porcentagem) < 17.5 )) {
+        setTimeout(ativaBounce('flag-2'), 1000); 
+      }
+      else if((parseFloat(porcentagem) > 33 && parseFloat(porcentagem) <= 34 )) {
+        setTimeout(ativaBounce('flag-3'), 1000); 
+      }
+      else if((parseFloat(porcentagem) > 68 && parseFloat(porcentagem) <= 69 )) {
+        setTimeout(ativaBounce('flag-4'), 1000); 
+      }
+      else if((parseFloat(porcentagem) > 85 && parseFloat(porcentagem) <= 86 )) {
+        setTimeout(ativaBounce('flag-5'), 1000); 
+      }
+      else if((parseFloat(porcentagem) > 102 && parseFloat(porcentagem) <= 103 )) {
+        setTimeout(ativaBounce('flag-6'), 1000); 
+      }
+      else if((parseFloat(porcentagem) > 119 && parseFloat(porcentagem) <= 120 )) {
+        setTimeout(ativaBounce('flag-7'), 1000); 
+      }
+      else {
+        desativaBounce(flags);
+      }
     }
 
   </script>
