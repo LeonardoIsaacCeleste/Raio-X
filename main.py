@@ -1,32 +1,34 @@
-import os
 import serial
 from selenium import webdriver
+import os
+
+caminho = "file:" + \
+    os.path.dirname(os.path.abspath(__file__)) + "/ui/index.html"
 
 # TROCAR DEPENDENDO DE QUAL FOR A PORTA (/dev/tty/ACM0, COM5)
-serial_port = '/dev/ttyACM0'
+porta = '/dev/ttyACM0'
 
+ser = serial.Serial(porta, 9600)
 
-ser = serial.Serial(serial_port, 9600)
 maxRange = ser.read_until().decode('ascii').strip()
 
-driver = webdriver.Chrome()
-driver.get('file:/home/thiago/Documentos/projetos/flowih/RaioX-main/ui/index.html')
-oldData = ser.read_until().decode('ascii').strip()
-
-can_move = True
-debug = True
-
-while can_move:
+a = True
+while a:
     try:
-        data = ser.read_until().decode('ascii').strip()  # leitura da porta serial
-        print("Pos: "+data)
-        if not debug:
-            driver.execute_script(
-                f"moverHorizontalmente("+str(data)+","+str(maxRange)+");")
-            driver.execute_script(f"desabilitarRolagemHorizontal();")
-        else:
-            driver.execute_script(f"habilitarRolagemHorizontal;")
-        oldData = data
-    except Exception as e:
-        print(e)
-        can_move = False
+        maxRange = ser.read_until().decode('ascii').strip()  # Maximo
+        print("Max "+maxRange)
+    except:
+        a = False
+driver = webdriver.Chrome()
+
+driver.get(caminho)
+
+dataAnterior = ser.read_until().decode('ascii').strip()
+
+while True:
+    data = ser.readline().decode().strip()  # leitura da porta serial
+    print(f"Valor do encoder: {data}")  # exibição do valor do encode
+    if (dataAnterior != data):
+        driver.execute_script(
+            f"moverHorizontalmente("+str(data)+","+str(maxRange)+");")
+        dataAnterior = data

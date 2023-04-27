@@ -75,9 +75,9 @@
           <h1 class="title mt-[4vh]">Ethics and integrity are in</h1>
           <h1 class="title">everything we do</h1>
           <div class="content">
-            From the simplest activities to the greatest achievements.
-            We follow the rules and question when necessary,
-            always in search of what is right and best for society,
+            From the simplest activities to the greatest achievements. 
+            We follow the rules and question when necessary, 
+            always in search of what is right and best for society, 
             for the company and for all.
             <div class="checkpoint-container">
               <img class="flag animate-bounce" src="./assets/destination.png"/>
@@ -219,7 +219,7 @@
             building strong and lasting
             relationships. Establishing
             partnerships, based on real
-            commitment and flexibility.
+            commitment and flexibility. 
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
           </div>
         </div>
@@ -459,7 +459,7 @@
             using the best of each
             location. Vision of a world
             without borders and of
-            valuing diversity.
+            valuing diversity. 
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
           </div>
         </div>
@@ -524,24 +524,38 @@
             considering stockholders’
             profitability, respect for
             quality of life, environment
-            and society.
+            and society. 
             <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
           </div>
         </div>
       </div>
     </div>
-    <input type="range" id="scroll-range" class="scroll-range" min="0" max="100" value="0" input="teste">
+    <input type="range" id="scroll-range" class="scroll-range" min="0" max="100" " value="0" input="teste">
   </body>
   <script type="text/javascript">
-    function moverHorizontalmente(porcentagem,maxRange) {
-      console.log("porcentagem ",porcentagem," maxRange ",maxRange)
-      document.body.style.overflowX = 'scroll';
-      console.log("scrollando")
-      var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth;
-      var posicao = larguraTotal * (porcentagem / maxRange);
-      document.documentElement.scrollLeft = posicao;
+    let teste = document.getElementById('range-value');
+    window.addEventListener('input', function(e) {
+      let range = e.target.value;
+      let panel = document.getElementById("scrolling-container")
+      let total = panel.scrollWidth - panel.offsetWidth;
+      let percentage = total*(range/100);
 
-      document.body.style.overflowX = 'hidden';
+      panel.scrollLeft = percentage;
+      teste.innerText = range;
+    });
+    function desabilitarRolagemHorizontal() {
+      let panel = document.getElementById("scrolling-container")
+      panel.style.overflowX = 'hidden';
+    }
+    function habilitarRolagemHorizontal() {
+      document.body.style.overflowX = 'scroll'; // ou 'auto', dependendo da sua preferência
+    }
+    function moverHorizontalmente(range) {
+      let panel = document.getElementById("scrolling-container")
+      let total = panel.scrollWidth - panel.offsetWidth;
+      let percentage = total*(range/100);
+      teste.innerText = e.target.value;
+      panel.scrollLeft = percentage;
     }
 
   </script>
