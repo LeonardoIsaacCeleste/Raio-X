@@ -97,12 +97,13 @@ z-index: 2;
     font-size: 2vh;
     font-weight: bolder;
     max-width: 12.5em;
+    margin-top: 15vh !important;
     -webkit-animation: text-fade 10s infinite;
     animation: text-fade 10s infinite;
   }
   .plane {
     height: 3.75vh;
-    left: 11vw;
+    left: 6vw;
     position: fixed;
     bottom: 1vh;
     z-index: 2;
@@ -137,8 +138,8 @@ z-index: 2;
   .carousel-dots {
     position: absolute;
     width: fit-content;
-    left: 30%;
-    bottom: 1.5vh !important;
+    bottom: -13vh !important;
+    left: 18vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -151,6 +152,13 @@ z-index: 2;
     gap: 4px;
     z-index: 2;
   }
+  .carousel-dots .dots {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 4px;
+    border: 0.1px solid transparent;
+    border-radius: 56%;
+    cursor: pointer;
+    }
 
   .carousel-wrapper .carousel-item img {
       height: 10vh;
