@@ -582,7 +582,7 @@
       plane.classList.remove('plane-stopped');
     }
     function checaIntervalo(min,max, porcentagem) {
-      if (parseFloat(porcentagem) >= min && parseFloat(porcentagem) < max) {
+      if (parseFloat(porcentagem) >= min && parseFloat(porcentagem) <= max) {
         return true;
       }
     }
