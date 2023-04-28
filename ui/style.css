@@ -42,11 +42,12 @@ top: 0;
   width: 10vh;
   position: absolute;
   bottom: 19vh;
+  transition: all 1s ease-in-out;
 }
 .container {
   padding: 5%;
   min-width: 90vw;
-  margin-top: 4vh;
+  animation: container-fade 1s ease-in-out;
 }
 .pic-container {
   position: relative;
@@ -121,6 +122,7 @@ z-index: 2;
     width: 9vh;
     position: absolute;
     bottom: 18vh;
+    transition: all 1s ease-in-out;
   }
   .carousel-wrapper .carousel-item {
     position: absolute;
@@ -196,6 +198,7 @@ z-index: 2;
     width: 9vh;
     position: absolute;
     bottom: 16vh;
+    transition: all 1s ease-in-out;
   }
 }
 @media (min-width: 1300px) and (max-width: 1650px) and (max-height:1000px)  {
@@ -234,6 +237,7 @@ z-index: 2;
     width: 9vh;
     position: absolute;
     bottom: 16vh;
+    transition: all 1s ease-in-out;
   }
   .plane {
     height: 3.75vh;
@@ -538,4 +542,14 @@ ANIMATIONS
 100% {
   opacity: 0.5;
 }
+} 
+@keyframes container-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(4vh);
+  }
 } 
