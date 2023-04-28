@@ -571,43 +571,40 @@
     function ativaBounce(flagId) {
       let plane = document.getElementById('plane');
       let flag = document.getElementById(flagId);
+      console.log("FLAG - ", flag)
       flag.classList.add('animate-bounce');
       plane.classList.add('plane-stopped');
     }
-    function desativaBounce(flagList) {
+    function desativaBounce() {
+      let flags = ['flag-1', 'flag-2','flag-3', 'flag-4', 'flag-5', 'flag-6', 'flag-7'];
       let plane = document.getElementById('plane');
-      flagList.forEach(flagId =>document.getElementById(flagId).classList.remove('animate-bounce'));
+      flags.forEach(flagId =>document.getElementById(flagId).classList.remove('animate-bounce'));
       plane.classList.remove('plane-stopped');
     }
+    function checaIntervalo(min,max, porcentagem) {
+      if (parseFloat(porcentagem) >= min && parseFloat(porcentagem) < max) {
+        return true;
+      }
+    }
     function ativaEfeitosStep(porcentagem) {
-      let flags = ['flag-1', 'flag-2','flag-3', 'flag-4', 'flag-5', 'flag-6', 'flag-7'];
-      /*let validations = {
-        'flag-1': () =>
-      }*/
-      if (parseFloat(porcentagem) >= 0 && parseFloat(porcentagem) < 1 ) {
-        setTimeout(ativaBounce('flag-1'), 1000);
+
+      let validations = {
+        'flag-1': () => {return checaIntervalo(-1,1, porcentagem) ? true : false},
+        'flag-2': () => {return checaIntervalo(10,17.5,porcentagem) ? true : false},
+        'flag-3': () => {return checaIntervalo(30,34,porcentagem) ? true : false},
+        'flag-4': () => {return checaIntervalo(40,51,porcentagem) ? true : false},
+        'flag-5': () => {return checaIntervalo(60,68,porcentagem) ? true : false},
+        'flag-6': () => {return checaIntervalo(80,85,porcentagem) ? true : false},
+        'flag-7': () => {return checaIntervalo(101,103,porcentagem) ? true : false},
       }
-      else if((parseFloat(porcentagem) > 16.5 && parseFloat(porcentagem) < 17.5 )) {
-        setTimeout(ativaBounce('flag-2'), 1000); 
+      let [res, el] =  Object.entries(validations).filter(([key,el])=> el() != false);
+      let key = res?.length > 0 ? res[0] : "-"
+      if (key !== "-") {
+        ativaBounce(key)
+      } else {
+        desativaBounce()
       }
-      else if((parseFloat(porcentagem) > 33 && parseFloat(porcentagem) <= 34 )) {
-        setTimeout(ativaBounce('flag-3'), 1000); 
-      }
-      else if((parseFloat(porcentagem) > 49 && parseFloat(porcentagem) <= 51 )) {
-        setTimeout(ativaBounce('flag-4'), 1000); 
-      }
-      else if((parseFloat(porcentagem) > 66 && parseFloat(porcentagem) <= 68 )) {
-        setTimeout(ativaBounce('flag-5'), 1000); 
-      }
-      else if((parseFloat(porcentagem) > 83 && parseFloat(porcentagem) <= 85 )) {
-        setTimeout(ativaBounce('flag-6'), 1000); 
-      }
-      else if((parseFloat(porcentagem) > 101 && parseFloat(porcentagem) <= 102 )) {
-        setTimeout(ativaBounce('flag-7'), 1000); 
-      }
-      else {
-        desativaBounce(flags);
-      }
+ 
     }
 
   </script>
