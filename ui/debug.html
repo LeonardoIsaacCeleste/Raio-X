@@ -10,9 +10,9 @@
   </head>
   <body>
     <div class="wrapper" id="scrolling-container">
-      <img src="./assets/embraer-azul.png" class="plane" id="plane"/>
+      <img src="./assets/embraer-azul.png" class="plane plane-stopped" id="plane"/>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="rounded-[2em] h-[85vh]" id="container-1">
+        <div class="hidden rounded-[2em] h-[85vh]" id="container-1">
           <div class="carousel-wrapper" ethics-carousel-wrapper>
             <div class="carousel-item" ethics-carousel-item>
                 <img src="./assets/Ethics and integrity/Ethics.jpg" alt="">
@@ -86,7 +86,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="rounded-[2em] h-[85vh]" id="container-2">
+        <div class="hidden rounded-[2em] h-[85vh]" id="container-2">
           <div class="carousel-wrapper" ppl-carousel-wrapper>
             <div class="carousel-item" ppl-carousel-item>
                 <img src="./assets/Our people/Our people 01.jpg" alt="" style="height:125% !important">
@@ -150,7 +150,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="rounded-[2em] h-[85vh]" id="container-3">
+        <div class="hidden rounded-[2em] h-[85vh]" id="container-3">
           <div class="carousel-wrapper" serve-carousel-wrapper>
             <div class="carousel-item" serve-carousel-item>
                 <img src="./assets/We are here to serve our customers/Customer 02.jpg" alt="">
@@ -231,7 +231,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="rounded-[2em] h-[85vh]" id="container-4">
+        <div class="hidden rounded-[2em] h-[85vh]" id="container-4">
           <div class="carousel-wrapper" strive-carousel-wrapper>
             <div class="carousel-item" strive-carousel-item>
                 <img src="./assets/We strive for company excellence/Phenom-300E_Flight-Deck.jpg" alt="">
@@ -329,7 +329,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="rounded-[2em] h-[85vh]" id="container-5">
+        <div class="hidden rounded-[2em] h-[85vh]" id="container-5">
           <div class="carousel-wrapper" boldness-carousel-wrapper>
             <div class="carousel-item" boldness-carousel-item>
                 <img src="./assets/Boldness and innovation are our hallmarks/_EDN1837.jpg" alt="">
@@ -398,7 +398,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="rounded-[2em] h-[85vh]" id="container-6">
+        <div class="hidden rounded-[2em] h-[85vh]" id="container-6">
           <div class="carousel-wrapper" global-carousel-wrapper>
             <div class="carousel-item" global-carousel-item>
                 <img src="./assets/Global presence is our frontier/Global Presence 04.jpg" alt="">
@@ -483,7 +483,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="rounded-[2em] h-[85vh]" id="container-7">
+        <div class="hidden rounded-[2em] h-[85vh]" id="container-7">
           <div class="carousel-wrapper" future-carousel-wrapper>
             <div class="carousel-item" future-carousel-item>
                 <img src="./assets/We build a sustainable future/Energia Family 02.jpg" alt="">
@@ -554,46 +554,53 @@
     </div>
   </body>
   <script type="text/javascript">
-    desativaBounce() //coloca todos os cards como hidden
-    var overlay = document.querySelector('.wrapper'); //seleciona o elemento que vamos desativar o touch
-
-    overlay.addEventListener('touchmove', function(event) { //adiciona o evento de desabilitar o touch
-      event.preventDefault(); //desabilita
-    }, { passive: false });
-
-    function moverHorizontalmente(porcentagem, maxRange) { //funcao que lê o valor do encoder e move o scroll
-      moverAviao(); //coloca o avião em modo de movimento, sem a sombra
-      var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth; //calcula a largura total
-      var posicao = larguraTotal * (porcentagem / maxRange); //vê em que posição do site estamos, baseada na porcentagem
-      ativaEfeitosStep((porcentagem/maxRange)*100) //chama o ativador dos cards
-      document.documentElement.scrollLeft = posicao; //move o scroll
+    function moverHorizontalmente(porcentagem,maxRange) {
+      console.log("porcentagem ",porcentagem," maxRange ",maxRange)
+      //  let panel = document.getElementById("scrolling-container")
+      document.body.style.overflowX = 'scroll'; //  panel.style.overflowX = 'scroll';
+      var larguraTotal = document.documentElement.scrollWidth - document.documentElement.clientWidth;  //var larguraTotal = panel.scrollWidth - panel.clientWidth;
+      ativaEfeitosStep(porcentagem)
+      var posicao = larguraTotal * (porcentagem / maxRange);
+      document.documentElement.scrollLeft = posicao;
+      document.body.style.overflowX = 'hidden';
     }
-
-    function pararAviao(){ //coloca o avião em modo de stop, com a sombra
-      let plane = document.getElementById('plane'); //seleciona o avião
-      plane.classList.add("plane-stopped") //adiciona a classe
+    function ativaBounce(flagId) {
+      let plane = document.getElementById('plane');
+      let flag = document.getElementById(flagId);
+      flag.classList.add('animate-bounce');
+      plane.classList.add('plane-stopped');
     }
+    function desativaBounce() {
+      let flags = [
+      'flag-1', 
+      'flag-2',
+      'flag-3', 
+      'flag-4', 
+      'flag-5', 
+      'flag-6', 
+      'flag-7'];
 
-    function moverAviao(){ //coloca o avião em modo de stop, com a sombra
-      let plane = document.getElementById('plane');//seleciona o avião
-      plane.classList.remove("plane-stopped") //remove a classe
+      let containers= [ 
+      'container-1', 
+      'container-2', 
+      'container-3',
+      'container-4', 
+      'container-5', 
+      'container-6',
+      'container-7'];
+
+      let plane = document.getElementById('plane');
+      containers.forEach(containerId=>document.getElementById(containerId).classList.add('hidden'));
+      containers.forEach(containerId=>document.getElementById(containerId).classList.remove('container'));
+      flags.forEach(flagId =>document.getElementById(flagId).classList.remove('animate-bounce'));
+      plane.classList.remove('plane-stopped');
     }
-
-    function desativaBounce() { //funcao que esconde os cards
-      var lista = document.getElementsByClassName('rounded-[2em]'); // seleciona todos os cards
-      for (var i = 0; i < lista.length; i++) {
-        lista[i].classList.add('hidden'); //adiciona o hidden
-      }
-    }
-
     function checaIntervalo(min,max, porcentagem) {
       if (parseFloat(porcentagem) >= min && parseFloat(porcentagem) <= max) {
         return true;
       }
     }
-
     function ativaSlideDown(key) {
-      let flag = document.getElementById(key); //seleciona a bandeira
       let containers = {
         'flag-1': 'container-1',
         'flag-2': 'container-2',
@@ -606,25 +613,26 @@
       currentContainer = document.getElementById(containers[key])
       currentContainer.classList.remove('hidden');
       currentContainer.classList.add('container');
-      flag.classList.add('animate-bounce'); //ativa o movimento da bandeira
     }
-
     function ativaEfeitosStep(porcentagem) {
       let validations = {
-        'flag-1': () => {return checaIntervalo(-1,15, porcentagem) ? true : false},
-        'flag-2': () => {return checaIntervalo(16,32,porcentagem) ? true : false},
-        'flag-3': () => {return checaIntervalo(33,49,porcentagem) ? true : false},
-        'flag-4': () => {return checaIntervalo(50,65,porcentagem) ? true : false},
-        'flag-5': () => {return checaIntervalo(66,82,porcentagem) ? true : false},
-        'flag-6': () => {return checaIntervalo(83,98,porcentagem) ? true : false},
-        'flag-7': () => {return checaIntervalo(98,103,porcentagem) ? true : false},
+        'flag-1': () => {return checaIntervalo(-1,1, porcentagem) ? true : false},
+        'flag-2': () => {return checaIntervalo(10,17.5,porcentagem) ? true : false},
+        'flag-3': () => {return checaIntervalo(30,34,porcentagem) ? true : false},
+        'flag-4': () => {return checaIntervalo(40,51,porcentagem) ? true : false},
+        'flag-5': () => {return checaIntervalo(60,68,porcentagem) ? true : false},
+        'flag-6': () => {return checaIntervalo(80,85,porcentagem) ? true : false},
+        'flag-7': () => {return checaIntervalo(101,103,porcentagem) ? true : false},
       }
       let [res, el] =  Object.entries(validations).filter(([key,el])=> el() != false);
       let key = res?.length > 0 ? res[0] : "-"
       if (key !== "-") {
-        desativaBounce()
+        ativaBounce(key)
         ativaSlideDown(key)
+      } else {
+        desativaBounce()
       }
+ 
     }
 
   </script>
