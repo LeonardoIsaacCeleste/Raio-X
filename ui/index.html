@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="script.js" defer></script>
     <title></title>
@@ -12,7 +13,7 @@
     <div class="wrapper" id="scrolling-container">
       <img src="./assets/embraer-azul.png" class="plane plane-stopped" id="plane"/>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class=" container rounded-[2em] h-[85vh] ">
+        <div class="container rounded-[2em] h-[85vh]" id="container-1">
           <div class="carousel-wrapper" ethics-carousel-wrapper>
             <div class="carousel-item" ethics-carousel-item>
                 <img src="./assets/Ethics and integrity/Ethics.jpg" alt="">
@@ -86,7 +87,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class=" container rounded-[2em] h-[85vh] ">
+        <div class="container rounded-[2em] h-[85vh]" id="container-2">
           <div class="carousel-wrapper" ppl-carousel-wrapper>
             <div class="carousel-item" ppl-carousel-item>
                 <img src="./assets/Our people/Our people 01.jpg" alt="" style="height:125% !important">
@@ -150,7 +151,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="container rounded-[2em] h-[85vh] ">
+        <div class="container rounded-[2em] h-[85vh]" id="container-3">
           <div class="carousel-wrapper" serve-carousel-wrapper>
             <div class="carousel-item" serve-carousel-item>
                 <img src="./assets/We are here to serve our customers/Customer 02.jpg" alt="">
@@ -231,7 +232,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class=" container rounded-[2em] h-[85vh] ">
+        <div class="container rounded-[2em] h-[85vh]" id="container-4">
           <div class="carousel-wrapper" strive-carousel-wrapper>
             <div class="carousel-item" strive-carousel-item>
                 <img src="./assets/We strive for company excellence/Phenom-300E_Flight-Deck.jpg" alt="">
@@ -329,7 +330,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="container rounded-[2em] h-[85vh] ">
+        <div class="container rounded-[2em] h-[85vh]" id="container-5">
           <div class="carousel-wrapper" boldness-carousel-wrapper>
             <div class="carousel-item" boldness-carousel-item>
                 <img src="./assets/Boldness and innovation are our hallmarks/_EDN1837.jpg" alt="">
@@ -398,7 +399,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class=" container rounded-[2em] h-[85vh] ">
+        <div class="container rounded-[2em] h-[85vh]" id="container-6">
           <div class="carousel-wrapper" global-carousel-wrapper>
             <div class="carousel-item" global-carousel-item>
                 <img src="./assets/Global presence is our frontier/Global Presence 04.jpg" alt="">
@@ -483,7 +484,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center min-w-[100vw] h-[85vh]">
-        <div class="container rounded-[2em] h-[85vh] ">
+        <div class="container rounded-[2em] h-[85vh]" id="container-7">
           <div class="carousel-wrapper" future-carousel-wrapper>
             <div class="carousel-item" future-carousel-item>
                 <img src="./assets/We build a sustainable future/Energia Family 02.jpg" alt="">
@@ -555,29 +556,41 @@
   </body>
   <script type="text/javascript">
     function moverHorizontalmente(porcentagem,maxRange) {
-      console.log("porcentagem ",porcentagem," maxRange ",maxRange)
-
       let panel = document.getElementById("scrolling-container")
-
       panel.style.overflowX = 'scroll';
-      console.log("scrollando")
       var larguraTotal = panel.scrollWidth - panel.clientWidth;
       ativaEfeitosStep(porcentagem)
-      var posicao = larguraTotal * (porcentagem / maxRange);
+      var posicao = larguraTotal * (porcentagem / 100);
       panel.scrollLeft = posicao;
-
       document.body.style.overflowX = 'hidden';
     }
     function ativaBounce(flagId) {
       let plane = document.getElementById('plane');
       let flag = document.getElementById(flagId);
-      console.log("FLAG - ", flag)
       flag.classList.add('animate-bounce');
       plane.classList.add('plane-stopped');
     }
     function desativaBounce() {
-      let flags = ['flag-1', 'flag-2','flag-3', 'flag-4', 'flag-5', 'flag-6', 'flag-7'];
+      let flags = [
+      'flag-1', 
+      'flag-2',
+      'flag-3', 
+      'flag-4', 
+      'flag-5', 
+      'flag-6', 
+      'flag-7'];
+
+      let containers= [ 
+      'container-1', 
+      'container-2', 
+      'container-3',
+      'container-4', 
+      'container-5', 
+      'container-6',
+      'container-7'];
+
       let plane = document.getElementById('plane');
+      containers.forEach(containerId=>document.getElementById(containerId).classList.remove('w3-animate-fading'));
       flags.forEach(flagId =>document.getElementById(flagId).classList.remove('animate-bounce'));
       plane.classList.remove('plane-stopped');
     }
@@ -586,8 +599,20 @@
         return true;
       }
     }
+    function ativaSlideDown(key) {
+      let containers = {
+        'flag-1': 'container-1',
+        'flag-2': 'container-2',
+        'flag-3': 'container-3',
+        'flag-4': 'container-4',
+        'flag-5': 'container-5',
+        'flag-6': 'container-6',
+        'flag-7': 'container-7',
+      }
+      currentContainer = document.getElementById(containers[key])
+      currentContainer.classList.add('w3-animate-fading')
+    }
     function ativaEfeitosStep(porcentagem) {
-
       let validations = {
         'flag-1': () => {return checaIntervalo(-1,1, porcentagem) ? true : false},
         'flag-2': () => {return checaIntervalo(10,17.5,porcentagem) ? true : false},
@@ -601,6 +626,7 @@
       let key = res?.length > 0 ? res[0] : "-"
       if (key !== "-") {
         ativaBounce(key)
+        ativaSlideDown(key)
       } else {
         desativaBounce()
       }
