@@ -79,7 +79,6 @@
         </div>
         <div class="buttons-container">
           <img class="icon" id="player-1" src="./assets/play-circle.svg" onclick="startSpeak('player-1', 'ethics')" />
-          <img class="icon" id="pause-1" src="./assets/play-circle.svg" onclick="pauseSpeak('player-7')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
         <div class="checkpoint-container">
@@ -147,7 +146,6 @@
         </div>
         <div class="buttons-container">
           <img class="icon" id="player-2" src="./assets/play-circle.svg" onclick="startSpeak('player-2', 'our-people')" />
-          <img class="icon" id="pause-2" src="./assets/pause-circle.svg" onclick="pauseSpeak('player-2')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
         <div class="checkpoint-container">
@@ -232,7 +230,6 @@
         </div>
         <div class="buttons-container">
           <img class="icon" id="player-3" src="./assets/play-circle.svg" onclick="startSpeak('player-3', 'serve')" />
-          <img class="icon" id="pause-3" src="./assets/pause-circle.svg" onclick="pauseSpeak('player-3')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
         <div class="checkpoint-container">
@@ -334,7 +331,6 @@
         </div>
         <div class="buttons-container">
           <img class="icon" id="player-4" src="./assets/play-circle.svg" onclick="startSpeak('player-4', 'strive')" />
-          <img class="icon" id="pause-4" src="./assets/pause-circle.svg" onclick="pauseSpeak('player-4')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
         <div class="checkpoint-container">
@@ -406,8 +402,7 @@
           and courage.
         </div>
         <div class="buttons-container">
-          <img class="icon" id="player-5" src="./assets/play-circle.svg" onclick="startSpeak('player-5', '')" />
-          <img class="icon" id="pause-5" src="./assets/play-circle.svg" onclick="pauseSpeak('player-5')" />
+          <img class="icon" id="player-5" src="./assets/play-circle.svg" onclick="startSpeak('player-5', 'boldness')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
         <div class="checkpoint-container">
@@ -495,8 +490,7 @@
           valuing diversity.
         </div>
         <div class="buttons-container">
-          <img class="icon" id="player-6" src="./assets/play-circle.svg" onclick="startSpeak('player-6', 'pause-6', 'stop-6')" />
-          <img class="icon" id="player-6" src="./assets/pause-circle.svg" onclick="pauseSpeak('player-6')" />
+          <img class="icon" id="player-6" src="./assets/play-circle.svg" onclick="startSpeak('player-6', 'global')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
         <div class="checkpoint-container">
@@ -568,8 +562,7 @@
           and society.
         </div>
         <div class="buttons-container">
-          <img class="icon" id="player-7" src="./assets/play-circle.svg" onclick="startSpeak('player-7', '')" />
-          <img class="icon" id="pause-7" src="./assets/pause-circle.svg" onclick="pauseSpeak('player-7')" />
+          <img class="icon" id="player-7" src="./assets/play-circle.svg" onclick="startSpeak('player-7', 'future')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
         <div class="checkpoint-container">
@@ -600,7 +593,23 @@
     'player-7': ['title-7', 'content-7'],
   }
 
-  let speech = new SpeechSynthesisUtterance();
+    // seleciona todos os botões "próximo" dos carrosséis
+    const nextButtons = document.getElementsByClassName('next');
+    const prevButtons = document.getElementsByClassName('prev');
+    // define a função para acionar o evento de clique no botão "próximo"
+    function clickNextButton() {
+        for(i=0;i<7;i++){
+            if(nextButtons[i].disabled){
+              for(j=0;j<20;j++){
+                prevButtons[i].click();
+              }
+            }else{
+              nextButtons[i].click();
+            }
+        }
+    }
+    // aciona a função a cada 2 segundos usando setInterval
+    setInterval(clickNextButton, 2000);
 
 
   function moverHorizontalmente(porcentagem, maxRange) { //funcao que lê o valor do encoder e move o scroll
