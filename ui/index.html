@@ -333,7 +333,7 @@
           and disciplined execution.
         </div>
         <div class="buttons-container">
-          <img class="icon" id="player-4" src="./assets/play-circle.svg" onclick="startSpeak('player-4', '')" />
+          <img class="icon" id="player-4" src="./assets/play-circle.svg" onclick="startSpeak('player-4', 'strive')" />
           <img class="icon" id="pause-4" src="./assets/pause-circle.svg" onclick="pauseSpeak('player-4')" />
         </div>
         <img class="qr-code mt-[2em]" src="./assets/placeholder-qr.png"/>
@@ -671,8 +671,27 @@
 
   async function startSpeak(playId, audioName) {
     let playEle = document.getElementById(playId); // pega botao play
-    audio = new Audio('./voices/ethics.mp3')
-    audio.play()
+    if (playId == 'player-4') {
+      audio = new Audio('./voices/' + audioName.toString() +'.mp3')
+      audio.play() 
+      setTimeout(() => {
+      audio = new Audio('./voices/' + audioName.toString() +'-content1.mp3')
+      audio.play()
+      } ,3000);
+      setTimeout(() => {
+        audio = new Audio('./voices/' + audioName.toString() +'-content2.mp3')
+        audio.play()
+      } ,8000);
+      
+    } else {
+      audio = new Audio('./voices/' + audioName.toString() +'.mp3')
+      audio.play() 
+      setTimeout(() => {
+      audio = new Audio('./voices/' + audioName.toString() +'-content.mp3')
+      audio.play()
+      } ,5000);
+    }
+
 
   }
 
