@@ -680,7 +680,7 @@
 
   async function startSpeak(playId, audioName) {
     let playEle = document.getElementById(playId); // pega botao play
-    if (playId == 'player-4') {
+    if (playId == 'player-4' || playId == 'player-5') {
       audio = new Audio('./voices/' + audioName.toString() +'.mp3')
       audio.play() 
       setTimeout(() => {
@@ -690,7 +690,7 @@
       setTimeout(() => {
         audio = new Audio('./voices/' + audioName.toString() +'-content2.mp3')
         audio.play()
-      } ,8000);
+      } ,15000);
       
     } else {
       audio = new Audio('./voices/' + audioName.toString() +'.mp3')
