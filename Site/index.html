@@ -593,7 +593,23 @@
     'player-7': ['title-7', 'content-7'],
   }
 
-  let speech = new SpeechSynthesisUtterance();
+    // seleciona todos os botões "próximo" dos carrosséis
+    const nextButtons = document.getElementsByClassName('next');
+    const prevButtons = document.getElementsByClassName('prev');
+    // define a função para acionar o evento de clique no botão "próximo"
+    function clickNextButton() {
+        for(i=0;i<7;i++){
+            if(nextButtons[i].disabled){
+              for(j=0;j<20;j++){
+                prevButtons[i].click();
+              }
+            }else{
+              nextButtons[i].click();
+            }
+        }
+    }
+    // aciona a função a cada 2 segundos usando setInterval
+    setInterval(clickNextButton, 2000);
 
 
   function moverHorizontalmente(porcentagem, maxRange) { //funcao que lê o valor do encoder e move o scroll
@@ -664,7 +680,7 @@
 
   async function startSpeak(playId, audioName) {
     let playEle = document.getElementById(playId); // pega botao play
-    if (playId == 'player-4') {
+    if (playId == 'player-4' || playId == 'player-5') {
       audio = new Audio('./voices/' + audioName.toString() +'.mp3')
       audio.play() 
       setTimeout(() => {
@@ -674,7 +690,7 @@
       setTimeout(() => {
         audio = new Audio('./voices/' + audioName.toString() +'-content2.mp3')
         audio.play()
-      } ,8000);
+      } ,15000);
       
     } else {
       audio = new Audio('./voices/' + audioName.toString() +'.mp3')
