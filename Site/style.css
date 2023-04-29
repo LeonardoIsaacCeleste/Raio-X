@@ -1,5 +1,5 @@
-
 body {
+  width: 700%;
   padding: 0;
   margin: 0;
 }
@@ -12,7 +12,7 @@ CONTAINER
   position: relative;
   overflow-y: hidden;
   min-width:100vw;
-  height:100vh; 
+  height:100vh;
   background: rgb(97,36,153);
   background: linear-gradient(180deg, rgba(97,36,153,1) 19%, rgba(157,114,150,1) 55%, rgba(180,164,196,1) 89%, rgba(199,203,218,1) 100%);
 }
@@ -49,15 +49,31 @@ top: 0;
   min-width: 90vw;
   animation: container-fade 1s ease-in-out;
 }
+.buttons-container {
+  margin-top: 2vh;
+  display: flex;
+}
+.icon {
+  opacity: 0.7;
+  cursor: default;
+}
+.played {
+  opacity: 0.4;
+  cursor: default;
+}
+.icon:hover {
+  opacity: 1;
+  cursor: pointer;
+}
 .pic-container {
   position: relative;
 }
 .checkpoint-container {
 margin-top: 11vh;
 color: white;
-display:flex; 
+display:flex;
 flex-direction: column;
-align-items:flex-start; 
+align-items:flex-start;
 position: absolute;
 bottom: 7vh
 }
@@ -108,7 +124,7 @@ z-index: 2;
     position: fixed;
     bottom: 1vh;
     z-index: 2;
-    
+
   }
   .message {
     font-weight: bolder;
@@ -136,7 +152,7 @@ z-index: 2;
     -webkit-transition: all 300ms;
     transition: all 300ms;
     z-index: 1;
-  } 
+  }
   .carousel-dots {
     position: absolute;
     width: fit-content;
@@ -185,7 +201,7 @@ z-index: 2;
     position: fixed;
     bottom: 1vh;
     z-index: 2;
-    
+
   }
   .carousel-dots .dots {
     background-color: rgba(0, 0, 0, 0.4);
@@ -252,7 +268,7 @@ z-index: 2;
     margin-top: 1em;
     width: 70vw;
     text-align: initial;
-  } 
+  }
   .carousel-dots {
     bottom: -18.5vh !important;
   }
@@ -390,7 +406,7 @@ background-color: #fff;
 }
 
 /*
-PROGRESS BAR 
+PROGRESS BAR
 */
 
 .progress {
@@ -531,7 +547,7 @@ ANIMATIONS
 100% {
   opacity: 1;
 }
-} 
+}
 @keyframes text-fade {
 0% {
   opacity: 0.5;
@@ -542,7 +558,7 @@ ANIMATIONS
 100% {
   opacity: 0.5;
 }
-} 
+}
 @keyframes container-fade {
   0% {
     opacity: 0;
@@ -552,4 +568,4 @@ ANIMATIONS
     opacity: 1;
     transform: translateY(4vh);
   }
-} 
+}
