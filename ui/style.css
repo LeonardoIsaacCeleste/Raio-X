@@ -49,6 +49,22 @@ top: 0;
   min-width: 90vw;
   animation: container-fade 1s ease-in-out;
 }
+.buttons-container {
+  margin-top: 2vh;
+  display: flex;
+}
+.icon {
+  opacity: 0.7;
+  cursor: default;
+}
+.played {
+  opacity: 0.4;
+  cursor: default;
+}
+.icon:hover {
+  opacity: 1;
+  cursor: pointer;
+}
 .pic-container {
   position: relative;
 }
